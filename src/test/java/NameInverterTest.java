@@ -17,7 +17,7 @@ public class NameInverterTest {
     @Test
     void shouldThrowExceptionWhenNullProvided() {
         Assertions.assertThrows(NullPointerException.class, () ->
-            nameInverter.invert(null));
+                nameInverter.invert(null));
     }
 
     @Test
@@ -30,5 +30,11 @@ public class NameInverterTest {
     void shouldReturnEmptyStringWhenSpacesGiven() {
         String inverted = nameInverter.invert("   ");
         assertThat(inverted).isEqualTo(EMPTY_STRING);
+    }
+
+    @Test
+    void shouldReturnInvertedFirstAndLastName() {
+        String inverted = nameInverter.invert("Jan Kowalski");
+        assertThat(inverted).isEqualTo("Kowalski, Jan");
     }
 }
