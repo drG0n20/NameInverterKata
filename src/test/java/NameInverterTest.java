@@ -2,8 +2,11 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class NameInverterTest {
 
+    public static final String EMPTY_STRING = "";
     private NameInverter nameInverter;
 
     @BeforeEach
@@ -21,6 +24,12 @@ public class NameInverterTest {
     @Test
     void shouldReturnEmptyStringWhenEmptyStringGiven() {
         String inverted = nameInverter.invert("");
-        org.assertj.core.api.Assertions.assertThat(inverted).isEqualTo("");
+        assertThat(inverted).isEqualTo(EMPTY_STRING);
+    }
+
+    @Test
+    void shouldReturnEmptyStringWhenSpacesGiven() {
+        String inverted = nameInverter.invert("   ");
+        assertThat(inverted).isEqualTo(EMPTY_STRING);
     }
 }
